@@ -1,0 +1,36 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+
+#clock-container {
+  position: relative;
+  display: inline-block;
+}
+
+#digital-clock {
+  font-size: 48px;
+  margin: 0;
+}
+
+#dot {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+#start-button {
+  margin-top: 20px;
+}
+
+#history-list {
+  margin-top: 20px;
+  list-style-type: none;
+}
