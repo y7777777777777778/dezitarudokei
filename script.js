@@ -1,0 +1,44 @@
+const express = require('express');
+const sqlite3 = require('sqlite3').verbose();
+const app = express();
+const port = 3000;
+
+// SQLiteデータベース接続
+const db = new sqlite3.Database(':memory:');
+
+// 初期セットアップ（履歴テーブル作成）
+db.serialize(() => {
+  db.run("CREATE TABLE history (id INTEGER PRIMARY KEY, content TEXT)");
+});
+
+// ミドルウェア設定
+app.use(express.json());
+
+// 履歴を取得するエンドポイント
+app.get('/history', (req, res) => {
+  db.all("SELECT * FROM history", (err, rows) => {
+    if (err) {
+      res.status(500).send(err.message);
+    } else {
+      res.json(rows);
+    }
+  });
+});
+
+// 履歴を追加するエンドポイント
+app.post('/history', (req, res) => {
+  const content = req.body.content;
+  db.run("INSERT INTO history (content) VALUES (?)", [content], function(err) {
+    if (err) {
+      res.status(500).send(err.message);
+    } else {
+      res.json({ id: this.lastID, content });
+    }
+  });
+});
+
+// サーバー開始
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});
+
