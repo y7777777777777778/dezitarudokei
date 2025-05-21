@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>History App</title>
+  <title>Digital Clock with History</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Welcome to the History App!</h1>
-  <form id="history-form">
-    <input type="text" id="history-input" placeholder="Enter history item" required>
-    <button type="submit">Add</button>
-  </form>
+  <div id="clock-container">
+    <h1 id="digital-clock">00:00:00</h1>
+    <div id="dot"></div>
+  </div>
+  <button id="start-button" style="display: none;">Start</button>
   <ul id="history-list"></ul>
   <script src="script.js"></script>
 </body>
