@@ -1,0 +1,12 @@
+{
+  "name": "history-app",
+  "version": "1.0.0",
+  "description": "A simple app to manage history entries",
+  "main": "historyApp.js",
+  "scripts": {
+    "start": "node historyApp.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
